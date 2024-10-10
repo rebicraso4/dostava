@@ -36,7 +36,7 @@ const RestoransListItem = ({ kafana }: RestoransListItemProps) => {
                 <View style={styles.infoContainer}>
                     <Text style={styles.title}>{kafana.name}</Text>
                     <Text style={styles.address}>{kafana.address}</Text>
-                    <Text style={styles.hours}>Radno vreme: {kafana.work_hours}</Text>
+                    <Text style={styles.hours}>Radno vrijeme: {kafana.work_hours}</Text>
                 </View>
             </Pressable>
         </Link>
@@ -92,11 +92,13 @@ const styles = StyleSheet.create({
     },
     openBadge: {
         position: 'absolute',
-        bottom: 10,
-        left: 24,
+        bottom: 0,
+        left: 0,
+        right: 0,
         paddingHorizontal: 4,
         paddingVertical: 2,
         borderRadius: 4,
+        backgroundColor: 'rgba(0, 0, 0, 0.3)',
         minWidth: 60,
     },
     open: {
@@ -109,13 +111,13 @@ const styles = StyleSheet.create({
         color: 'white',
         fontWeight: 'bold',
         fontSize: 10,
-        textAlign:'center',
+        textAlign: 'center',
     },
     closedText: {
         color: 'white',
         fontWeight: 'bold',
         fontSize: 10,
-        textAlign:'center',
+        textAlign: 'center',
     },
     title: {
         fontSize: 18,

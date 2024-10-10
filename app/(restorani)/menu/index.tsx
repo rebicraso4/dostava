@@ -1,16 +1,24 @@
-import {FlatList, View} from 'react-native';
-import products from "@/assets/data/products";
-import ProductListItem from "@/components/ProductListItem";
+import {ActivityIndicator, FlatList, View,Text} from 'react-native';
+import RestoransListItem from '@/providers/RestoransListItem'
+import {useRestoranList} from "@/api/restorans";
 
 export default function HomeScreen() {
+
+
+    const {data: restorans, error, isLoading } = useRestoranList();
+    if (isLoading){
+        return <ActivityIndicator/>;
+    }
+    if (error){
+        return <Text>Greska u fetchproduktu</Text>;
+    }
     return (
         <View>
-            <FlatList data={products}
-                      renderItem={({item})=> <ProductListItem product={item}/>}
-                      numColumns={2}
-                      contentContainerStyle={{gap:10,padding:10}}
-                      columnWrapperStyle={{gap:10}}
+            <FlatList data={restorans}
+                      renderItem={({item})=> <RestoransListItem kafana={item}/>}
+                      contentContainerStyle={{gap:10,padding:10, paddingBottom: 80}}
             />
-        </View>
+             </View>
+
 );
 };
